@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplicationAPIToangralur
 {
-    public class Room
+    public class Light_sensor
     {
-        public int RoomId { get; set; }
-        public int TemperatureInCelsius { get; set; }
+        [Key]
+        public int LightId { get; set; }
         public int LightLevel { get; set; }
-        public int SoundLevel { get; set; }
+        public IList<Data> Datas { get; set; }
     }
 }

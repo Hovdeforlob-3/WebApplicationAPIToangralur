@@ -17,13 +17,14 @@ namespace WebApplicationAPIToangralur
         // GET: api/<RoomController>
         [HttpGet]
         [Route("Get")]
-        public List<Room> Get()
+        public List<User> Get()
         {
             using (var context = new RoomContext())
             {
-                List<Room> rooms = context.Room.ToList();
+                List<User> user = context.User.ToList();
+                //List<string> rooms = new List<string>() { "test" };
 
-                return rooms;
+                return user;
             }
         }
 
@@ -33,9 +34,10 @@ namespace WebApplicationAPIToangralur
         {
             using (var context = new RoomContext())
             {
-                var data = new Room { TemperatureInCelsius = temp, LightLevel = light, SoundLevel = sl };
+                //var data = new Room { TemperatureInCelsius = temp, LightLevel = light, SoundLevel = sl };
+                var data = new Data { DateTime = DateTime.Now };
 
-                context.Room.Add(data);
+                //context.Room.Add(data);
                 context.SaveChanges();
             }
         }
