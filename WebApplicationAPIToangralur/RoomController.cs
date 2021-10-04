@@ -29,11 +29,11 @@ namespace WebApplicationAPIToangralur
 
         [HttpGet]
         [Route("Set")]
-        public void Set(int temp)
+        public void Set(int temp, int light, int sl)
         {
             using (var context = new RoomContext())
             {
-                var data = new Room { RoomId = 1, TemperatureInCelsius = temp, LightLevel = 30, SoundLevel = 30 };
+                var data = new Room { TemperatureInCelsius = temp, LightLevel = light, SoundLevel = sl };
 
                 context.Room.Add(data);
                 context.SaveChanges();
