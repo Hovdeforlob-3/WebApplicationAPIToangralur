@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 /// <summary>
@@ -21,17 +22,16 @@ namespace WebApplicationAPIToangralur
         {
             using (var context = new RoomContext())
             {
-                List<RoomData> rooms = context.Room.ToList();
-
+                var rooms = context.Room.Include(x=> x.)
+                //var roomsJson = JsonConvert.SerializeObject();
                 return rooms;
-
             }
 
         }
 
         [HttpGet]
         [Route("Set")]
-        public void Set(string roomId, int light, int co2,  int sound, bool motion, double tempH, double tempF, int humiH, int humiF)
+        public void Set(string roomId, int light, int co2, int sound, bool motion, double tempH, double tempF, int humiH, int humiF)
         {
             using (var context = new RoomContext())
             {

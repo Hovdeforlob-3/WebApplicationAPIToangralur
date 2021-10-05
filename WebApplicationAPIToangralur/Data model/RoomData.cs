@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplicationAPIToangralur
 {
@@ -20,7 +21,6 @@ namespace WebApplicationAPIToangralur
 
         public virtual Tempertur_sensor TemperturHead_Sensor { get; set; }
         public virtual Tempertur_sensor TemperturFoot_Sensor { get; set; }
-
 
     }
 }
