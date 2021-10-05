@@ -7,9 +7,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplicationAPIToangralur
 {
-    public class TempaturData
+    public class RoomTempatur
     {
-        public Data Room { get; set; }
+        public RoomData Rooms { get; set; }
         public Tempertur_sensor Tempertur_Sensor { get; set; }
 
         [Key]

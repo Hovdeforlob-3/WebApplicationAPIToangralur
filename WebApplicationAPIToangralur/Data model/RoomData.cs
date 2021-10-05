@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApplicationAPIToangralur
 {
-    public class Data
+    public class RoomData
     {
         [Key]
         public string RoomId { get; set; }

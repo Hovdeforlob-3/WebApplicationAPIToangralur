@@ -11,6 +11,6 @@ namespace WebApplicationAPIToangralur
         [Key]
         public int TemperturId { get; set; }
         public bool Tempertur { get; set; }
-        public IList<TempaturData> TempaturDatas{ get; set; }
+        public IList<RoomTempatur> RoomTempatur { get; set; }
     }
 }

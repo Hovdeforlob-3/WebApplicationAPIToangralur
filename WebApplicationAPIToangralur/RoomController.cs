@@ -35,7 +35,7 @@ namespace WebApplicationAPIToangralur
             using (var context = new RoomContext())
             {
                 //var data = new Room { TemperatureInCelsius = temp, LightLevel = light, SoundLevel = sl };
-                var data = new Data { DateTime = DateTime.Now };
+                var data = new RoomData { DateTime = DateTime.Now };
 
                 //context.Room.Add(data);
                 context.SaveChanges();

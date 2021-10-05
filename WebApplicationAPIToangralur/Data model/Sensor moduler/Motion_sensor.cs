@@ -11,6 +11,7 @@ namespace WebApplicationAPIToangralur
         [Key]
         public int MotionId { get; set; }
         public bool MotionDetected { get; set; }
-        public IList<Data> Datas { get; set; }
+        public IList<RoomData> Rooms { get; set; }
+
     }
 }
