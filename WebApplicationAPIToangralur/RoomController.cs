@@ -35,9 +35,18 @@ namespace WebApplicationAPIToangralur
             using (var context = new RoomContext())
             {
                 //var data = new Room { TemperatureInCelsius = temp, LightLevel = light, SoundLevel = sl };
-                var data = new RoomData { DateTime = DateTime.Now };
-
-                //context.Room.Add(data);
+                var data = new RoomData
+                {
+                    RoomId = "B.16",
+                    DateTime = DateTime.Now,
+                    Light_Sensor = new Light_sensor { LightLevel = 214 },
+                    Gas_Sensor = new Gas_sensor { Co2Level = 500 },
+                    Sound_Sensor = new Sound_sensor { SoundLevel = 102 },
+                    Motion_Sensor = new Motion_sensor { MotionDetected = false },
+                    TemperturHead_Sensor = new Tempertur_sensor { Tempertur = 200, Humidity = 109 },
+                    TemperturFoot_Sensor = new Tempertur_sensor { Tempertur = 10, Humidity = 1 }
+                };
+                context.Room.Add(data);
                 context.SaveChanges();
             }
         }

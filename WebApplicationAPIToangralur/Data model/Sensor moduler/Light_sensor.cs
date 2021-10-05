@@ -11,7 +11,6 @@ namespace WebApplicationAPIToangralur
         [Key]
         public int LightId { get; set; }
         public int LightLevel { get; set; }
-        public IList<RoomData> Rooms { get; set; }
 
     }
 }

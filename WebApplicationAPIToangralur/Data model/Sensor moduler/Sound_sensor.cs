@@ -11,7 +11,6 @@ namespace WebApplicationAPIToangralur
         [Key]
         public int SoundId { get; set; }
         public int SoundLevel { get; set; }
-        public IList<RoomData> Rooms { get; set; }
 
     }
 }

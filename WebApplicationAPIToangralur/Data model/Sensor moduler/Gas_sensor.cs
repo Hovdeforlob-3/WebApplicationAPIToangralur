@@ -10,9 +10,7 @@ namespace WebApplicationAPIToangralur
     {
         [Key]
         public int GasId { get; set; }
-        public bool Co2Level { get; set; }
-        public IList<RoomData> Rooms { get; set; }
-
+        public int Co2Level { get; set; }
 
     }
 }
