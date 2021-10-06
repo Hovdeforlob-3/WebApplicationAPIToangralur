@@ -16,7 +16,7 @@ namespace WebApplicationAPIToangralur
         {
             Database.SetInitializer<RoomContext>(new CreateDatabaseIfNotExists<RoomContext>());
 
-            Configuration.LazyLoadingEnabled = false;
+            //Configuration.LazyLoadingEnabled = false;
 
         }
 

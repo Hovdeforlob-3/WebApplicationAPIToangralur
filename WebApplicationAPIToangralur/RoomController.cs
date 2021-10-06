@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 /// <summary>
@@ -22,12 +24,20 @@ namespace WebApplicationAPIToangralur
         {
             using (var context = new RoomContext())
             {
-                var rooms = context.Room.Include(x=> x.)
-                //var roomsJson = JsonConvert.SerializeObject();
+                var rooms = context.Room
+                    .Include(gas => gas.Gas_Sensor)
+                    .Include(light => light.Light_Sensor)
+                    .Include(sound => sound.Sound_Sensor)
+                    .Include(motion => motion.Motion_Sensor)
+                    .Include(tempH => tempH.TemperturHead_Sensor)
+                    .Include(tempF => tempF.TemperturFoot_Sensor)
+                    .ToList();
+
                 return rooms;
             }
 
         }
+
 
         [HttpGet]
         [Route("Set")]
