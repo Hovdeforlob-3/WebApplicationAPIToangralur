@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -18,6 +21,7 @@ namespace WebApplicationAPIToangralur
     public class RoomController : ControllerBase
     {
         // GET: api/<RoomController>
+        [ApikeyAuth]
         [HttpGet]
         [Route("Get")]
         public List<RoomData> Get()
@@ -38,35 +42,49 @@ namespace WebApplicationAPIToangralur
 
         }
 
-
+        [ApikeyAuth]
         [HttpGet]
         [Route("Set")]
-        public void Set(string roomId, int light, int co2, int sound, bool motion, double tempH, double tempF, int humiH, int humiF)
+        public void Set(string roomId, int light, int co2, int sound, bool motion, double tempH, double tempF,
+            int humiH, int humiF)
         {
             using (var context = new RoomContext())
             {
-                //var data = new Room { TemperatureInCelsius = temp, LightLevel = light, SoundLevel = sl };
                 var data = new RoomData
                 {
-                    //RoomId = "B.16",
-                    //DateTime = DateTime.Now,
-                    //Light_Sensor = new Light_sensor { LightLevel = 214 },
-                    //Gas_Sensor = new Gas_sensor { Co2Level = 500 },
-                    //Sound_Sensor = new Sound_sensor { SoundLevel = 102 },
-                    //Motion_Sensor = new Motion_sensor { MotionDetected = false },
-                    //TemperturHead_Sensor = new Tempertur_sensor { Tempertur = 200, Humidity = 109 },
-                    //TemperturFoot_Sensor = new Tempertur_sensor { Tempertur = 10, Humidity = 1 }
                     RoomId = roomId,
                     DateTime = DateTime.Now,
-                    Light_Sensor = new Light_sensor { LightLevel = light },
-                    Gas_Sensor = new Gas_sensor { Co2Level = co2 },
-                    Sound_Sensor = new Sound_sensor { SoundLevel = sound },
-                    Motion_Sensor = new Motion_sensor { MotionDetected = motion },
-                    TemperturHead_Sensor = new Tempertur_sensor { Tempertur = tempH, Humidity = humiH },
-                    TemperturFoot_Sensor = new Tempertur_sensor { Tempertur = tempF, Humidity = humiF }
+                    Light_Sensor = new Light_sensor {LightLevel = light},
+                    Gas_Sensor = new Gas_sensor {Co2Level = co2},
+                    Sound_Sensor = new Sound_sensor {SoundLevel = sound},
+                    Motion_Sensor = new Motion_sensor {MotionDetected = motion},
+                    TemperturHead_Sensor = new Tempertur_sensor {Tempertur = tempH, Humidity = humiH},
+                    TemperturFoot_Sensor = new Tempertur_sensor {Tempertur = tempF, Humidity = humiF}
                 };
                 context.Room.Add(data);
                 context.SaveChanges();
+            }
+        }
+
+
+        //[ApikeyAuth]
+        [HttpGet]
+        [Route("User")]
+        public string CheckUser(string name, string password) // måske unit test
+        {
+            using (var context = new RoomContext())
+            {
+                var users = context.User.ToList();
+
+                foreach (var item in users)
+                {
+                    if (name == item.Username && password == item.Password)
+                    {
+                        return "200 ok";
+                    }
+                }
+
+                return "401 Error";
             }
         }
     }
