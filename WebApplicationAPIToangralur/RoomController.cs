@@ -70,7 +70,7 @@ namespace WebApplicationAPIToangralur
         //[ApikeyAuth]
         [HttpGet]
         [Route("User")]
-        public string CheckUser(string name, string password) // måske unit test
+        public UserResponde CheckUser(string name, string password)
         {
             using (var context = new RoomContext())
             {
@@ -80,11 +80,12 @@ namespace WebApplicationAPIToangralur
                 {
                     if (name == item.Username && password == item.Password)
                     {
-                        return "200 ok";
+                        var Valid = new UserResponde { Id = 1, StatusCode = "200 ok" };
+                        return Valid;
                     }
                 }
-
-                return "401 Error";
+                var notValid = new UserResponde { Id = 1, StatusCode = "401 not ok" };
+                return notValid;
             }
         }
     }
